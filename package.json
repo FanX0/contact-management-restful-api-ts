@@ -1,0 +1,11 @@
+{
+  "name": "contact-management-restfulapi-ts",
+  "version": "1.0.0",
+  "description": "Contact Management Restful API TS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Farid Azhari Nurcahyo",
+  "license": "ISC"
+}

@@ -37,3 +37,41 @@ export class UserTest {
         return user;
     }
 }
+
+export class ContactTest {
+
+    static async deleteAll() {
+        await prismaClient.contact.deleteMany({
+            where: {
+                username: "test"
+            }
+        })
+    }
+
+    static async create() {
+        await prismaClient.contact.create({
+            data: {
+                first_name: "test",
+                last_name: "test",
+                email: "test@example.com",
+                phone: "08999999",
+                username: "test"
+            }
+        });
+    }
+
+    static async get(): Promise<Contact> {
+        const contact = await prismaClient.contact.findFirst({
+            where: {
+                username: "test"
+            }
+        });
+
+        if (!contact) {
+            throw new Error("Contact is not found");
+        }
+
+        return contact;
+    }
+
+}

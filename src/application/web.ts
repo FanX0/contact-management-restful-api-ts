@@ -5,7 +5,7 @@ import { userRouter } from "../router/user-api";
 
 export const web = express();
 web.use(express.json());
-web.use(errorMiddleware);
 web.use(publicRouter)
 web.use(userRouter)
+web.use(errorMiddleware);
 

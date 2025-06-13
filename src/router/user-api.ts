@@ -2,6 +2,7 @@ import express from "express";
 import {authMiddleware} from "../middleware/auth-middleware"
 import {UserController} from "../controller/user-controller"
 import {ContactController} from "../controller/contact-controller"
+import {AddressController} from "../controller/address-controller"
 import { validateNumericId } from "../middleware/validate-id-middleware";
 
 
@@ -20,6 +21,39 @@ userRouter.put("/api/contacts/:contactId", validateNumericId("contactId"), Conta
 userRouter.delete("/api/contacts/:contactId", validateNumericId("contactId"), ContactController.remove);
 userRouter.get("/api/contacts", ContactController.search);
 
+// Address API
+userRouter.post(
+    "/api/contacts/:contactId/addresses",
+    validateNumericId("contactId"),
+    AddressController.create
+);
+
+userRouter.get(
+    "/api/contacts/:contactId/addresses/:addressId",
+    validateNumericId("contactId"),
+    validateNumericId("addressId"),
+    AddressController.get
+);
+
+userRouter.put(
+    "/api/contacts/:contactId/addresses/:addressId",
+    validateNumericId("contactId"),
+    validateNumericId("addressId"),
+    AddressController.update
+);
+
+userRouter.delete(
+    "/api/contacts/:contactId/addresses/:addressId",
+    validateNumericId("contactId"),
+    validateNumericId("addressId"),
+    AddressController.remove
+);
+
+userRouter.get(
+    "/api/contacts/:contactId/addresses",
+    validateNumericId("contactId"),
+    AddressController.list
+);
 export {
     userRouter
 }
